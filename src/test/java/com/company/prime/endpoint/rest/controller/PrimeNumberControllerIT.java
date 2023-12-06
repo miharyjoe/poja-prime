@@ -11,13 +11,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class PrimeNumberControllerIT extends FacadeIT {
   @Autowired GeneratePrimeNumberController generatePrimeNumberController;
-/*
   @Test
   void new_prime_ok() {
-    String actual = generatePrimeNumberController.generateNewPrime();
-    BigInteger probablePrimeNumber = new BigInteger(actual);
-    int certainty = (int) (99.99 * 100);
-    assertTrue(probablePrimeNumber.isProbablePrime(certainty));
+    BigInteger response = new BigInteger(generatePrimeNumberController.generateNewPrime());
+    Assertions.assertTrue(response.isProbablePrime(100));
   }
-*/
+
+  @Test
+  public void get_last_10_inserted_values_ok() {
+    for (int i = 0; i < 12; i++) {
+      generatePrimeNumberController.generateNewPrime();
+    }
+    List<String> last10InsertedPrime = generatePrimeNumberController.generatedPrimes();
+    Assertions.assertEquals(10, last10InsertedPrime.size());
+  }
+
+
 }

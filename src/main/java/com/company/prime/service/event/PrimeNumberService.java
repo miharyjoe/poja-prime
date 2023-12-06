@@ -17,9 +17,8 @@ public class PrimeNumberService {
 
   public BigInteger generatePrimeNumber() {
     BigInteger probablePrime = BigInteger.probablePrime(1_000, new Random());
-    PrimeNumber primeNumber = PrimeNumber.builder().primeNumber(probablePrime).build();
-    primeNumberRepository.save(primeNumber);
-    return probablePrime;
+    PrimeNumber prime = primeNumberRepository.save(PrimeNumber.builder().primeNumber(probablePrime).build());
+    return prime.getPrimeNumber();
   }
 
   public List<PrimeNumber> findLastGeneratedPrimes() {

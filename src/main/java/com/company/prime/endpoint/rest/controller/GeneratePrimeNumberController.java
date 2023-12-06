@@ -12,8 +12,8 @@ public class GeneratePrimeNumberController {
   private final PrimeNumberService primeNumberService;
 
   @GetMapping("/new-prime")
-  public BigInteger generateNewPrime() {
+  public String generateNewPrime() {
     BigInteger prime = primeNumberService.generatePrimeNumber();
-    return prime;
+    return prime.toString();
   }
 }

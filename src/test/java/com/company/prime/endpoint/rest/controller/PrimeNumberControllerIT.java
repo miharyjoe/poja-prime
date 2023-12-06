@@ -12,9 +12,9 @@ public class PrimeNumberControllerIT extends FacadeIT {
 
   @Test
   void new_prime_ok() {
-    BigInteger actual = generatePrimeNumberController.generateNewPrime();
-
+    String actual = generatePrimeNumberController.generateNewPrime();
+    BigInteger probablePrimeNumber = new BigInteger(actual);
     int certainty = (int) (99.99 * 100);
-    assertTrue(actual.isProbablePrime(certainty));
+    assertTrue(probablePrimeNumber.isProbablePrime(certainty));
   }
 }

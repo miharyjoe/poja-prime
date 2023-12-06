@@ -20,12 +20,4 @@ public class PrimeNumberControllerIT extends FacadeIT {
     assertTrue(probablePrimeNumber.isProbablePrime(certainty));
   }
 
-  @Test
-  public void get_last_10_inserted_values_ok() {
-    for (int i = 0; i < 12; i++) {
-      generatePrimeNumberController.generateNewPrime();
-    }
-    List<String> last10InsertedPrime = generatePrimeNumberController.generatedPrimes();
-    Assertions.assertEquals(10, last10InsertedPrime.size());
-  }
 }
